@@ -4,6 +4,7 @@ const FlightItem = ({ flight }) => {
     return (
         <li>
             <div>Flight Number: {flight.flight.number}</div>
+            <div>flightDate: : {flight.flight_date}</div>
             <div>Flight Status: {flight.flight_status}</div>
             <div>Departure Airport: {flight.departure.airport}</div>
             <div>Departure Delay: {flight.departure.delay}</div>
