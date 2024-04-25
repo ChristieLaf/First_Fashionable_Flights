@@ -151,6 +151,7 @@ class App extends Component {
         const response = await fetch('http://localhost:8080/api', requestOptions);
         const data = await response.text();
         console.log(data)
+        // console.log(data.flight_date)
 
 
     };
