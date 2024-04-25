@@ -5,23 +5,24 @@ const FlightsApi = {
 
 const flightController = {
   fetchFlights: async (req, res, next) => {
+        console.log("Reached flightController")
+      const query = `${FlightsApi.flightUrl}?access_key=${FlightsApi.flightKey}`;
 
-      // const query = `${FlightsApi.flightUrl}?access_key=${FlightsApi.flightKey}`;
+      try {
 
-      // try {
+          const response = await fetch(query);
+          const data = await response.json();
+          req.dataVault = data;
 
-      //     const response = await fetch(query);
-      //     const data = await response.json();
-      //     req.dataVault = data;
+         return next(); 
 
-      //     next(); 
+      } catch (error) {
 
-      // } catch (error) {
+          console.error('Error fetching flights:', error);
+          res.status(500).send('Error fetching flights');
 
-      //     console.error('Error fetching flights:', error);
-      //     res.status(500).send('Error fetching flights');
+      }
 
-      // }
   }
 };
 

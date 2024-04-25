@@ -31,7 +31,6 @@ module.exports = {
             }
         ]
     },
-
     // Plugins configuration
     plugins: [ //naviagte one folder up to the template directory, the base folder is webpack config 
         new HtmlWebpackPlugin({
@@ -39,7 +38,6 @@ module.exports = {
             filename: 'index.html'
         })
     ],
-
     // Development server configuration
     devServer: {
         static: {
@@ -49,15 +47,23 @@ module.exports = {
         port: 8080, 
         open: true,
         hot: true, 
-        historyApiFallback: true, 
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3000', 
-                secure: false, 
-                changeOrigin: true, 
-                pathRewrite: { '^/api': '' }, 
+        historyApiFallback: true,
+        // proxy: {
+        //     '/api': {
+        //         target: 'http://localhost:3000', 
+        //         secure: false, 
+        //         changeOrigin: true, 
+        //         pathRewrite: { '^/api': '' }, 
+        //     }
+        // }
+        proxy: [
+            {
+              context: ['/api'],
+              changeOrigin: true,
+              secure: false, 
+              target: `http://localhost:3000/`,
             }
-        }
+        ]
     }
-};
+}
 // enable terminal for me

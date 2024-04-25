@@ -140,10 +140,17 @@ class App extends Component {
     //     // Fetch flights on component mount if needed or leave this method out
     // }
 
-    fetchFlights = (event) => {
+    fetchFlights = async (event) => {
         event.preventDefault();  // Prevent the form from causing a page reload
-
-       
+        
+        const requestOptions = {
+            method: "POST",
+            redirect: "follow"
+        };
+        
+        const response = await fetch('http://localhost:8080/api', requestOptions);
+        const data = await response.text();
+        console.log(data)
 
 
     };

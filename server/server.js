@@ -5,7 +5,13 @@ const PORT = process.env.PORT || 3000;
 
 const apiRouter = require('./routers/apiRouter.js');
 
-app.use('/api', apiRouter);
+app.use('/api', 
+    (req, res, next)=>{
+        console.log("Reached API endpoint");
+        return next();
+    },
+    apiRouter
+);
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
