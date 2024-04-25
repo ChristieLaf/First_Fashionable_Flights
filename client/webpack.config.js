@@ -14,7 +14,7 @@ module.exports = {
     module: {
         //if i wnat to add images, i have to add another rules
         rules: [
-            {
+            {// join zoom .....
                 test: /\.js$/, 
                 exclude: /node_modules/, 
                 use: {
@@ -60,3 +60,4 @@ module.exports = {
         }
     }
 };
+// enable terminal for me
