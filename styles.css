@@ -1,3 +1,34 @@
-h1 {
+h1, h2 {
     text-align: center;
 }
+
+#form {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+/* #flight-info {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.flight-detail {
+    position: relative;
+    padding-left: 20px; /* space for the star */
+    margin-bottom: 5px; /* space between details */
+}
+
+.flight-detail:before {
+    content: '★'; /* Unicode character for a star */
+    position: absolute;
+    left: 0;
+    color: gold; /* or any color you prefer */
+}
+
+body {
+    background-color: pink;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
