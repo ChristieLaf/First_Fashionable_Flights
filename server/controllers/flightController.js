@@ -1,3 +1,6 @@
+// const fetch = require('node-fetch');
+require('dotenv').config();
+
 const FlightsApi = {
   flightUrl: process.env.REACT_APP_FLIGHT_URL,
   flightKey: process.env.REACT_APP_FLIGHT_KEY,
