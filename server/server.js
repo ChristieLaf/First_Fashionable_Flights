@@ -1,10 +1,12 @@
-import express from 'express';
+import express, { json } from 'express';
 import path from 'path';
 import apiRouter from './routers/apiRouter.js';
 import weatherRouter from './routers/weatherRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// app.use(express,json());
 
 app.use(
   '/api',

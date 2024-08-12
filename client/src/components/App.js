@@ -18,7 +18,7 @@ const App = () => {
 
       const response = await fetch('http://localhost:8080/api', requestOptions);
       const data = await response.json();
-      console.log(data.flightData.data);
+      // console.log(data.flightData.data);
 
       const flightNumbersSet = new Set();
 
@@ -26,7 +26,12 @@ const App = () => {
         flightNumbersSet.add(element.flight.number);
       }
 
-      setFlightNumbers(Array.from(flightNumbersSet));
+      // Convert the Set to an array and sort the numbers numerically
+      const sortedFlightNumbers = Array.from(flightNumbersSet).sort(
+        (a, b) => a - b
+      );
+
+      setFlightNumbers(sortedFlightNumbers);
     };
 
     fetchFlightNumbers();
@@ -57,6 +62,7 @@ const App = () => {
       );
 
     console.log(matched);
+    console.log(flightNumber)
 
     setFlights(matched);
     setSearchClicked(true);
