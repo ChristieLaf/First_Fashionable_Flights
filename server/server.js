@@ -1,24 +1,28 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import apiRouter from './routers/apiRouter.js';
+import weatherRouter from './routers/weatherRouter.js';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const apiRouter = require('./routers/apiRouter.js');
-
-app.use('/api', 
-    (req, res, next)=>{
-        console.log("Reached API endpoint");
-        return next();
-    },
-    apiRouter
+app.use(
+  '/api',
+  (req, res, next) => {
+    console.log('Reached API endpoint');
+    return next();
+  },
+  apiRouter
 );
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use('/weather', weatherRouter);
+
+app.use(express.static(path.join(path.dirname(''), '..', 'client', 'dist')));
 
 app.use('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+  res.sendFile(path.resolve(path.dirname(''), '..', 'client', 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

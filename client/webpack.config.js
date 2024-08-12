@@ -1,14 +1,14 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const dotenv = require('dotenv');
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-module.exports = {
+export default {
   entry: './client/src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(path.dirname(''), 'dist'),
     filename: 'bundle.js',
   },
 
@@ -31,9 +31,7 @@ module.exports = {
       },
     ],
   },
-  // Plugins configuration
   plugins: [
-    //naviagte one folder up to the template directory, the base folder is webpack config
     new HtmlWebpackPlugin({
       template: 'template/index.html',
       filename: 'index.html',
@@ -47,10 +45,9 @@ module.exports = {
       ),
     }),
   ],
-  // Development server configuration
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(path.dirname(''), 'dist'),
     },
     compress: true,
     port: 8080,

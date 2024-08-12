@@ -1,6 +1,7 @@
-const express = require('express');
-const flightController = require('./../controllers/flightController.js');
-const weatherController = require('./../controllers/weatherController.js');
+import express from 'express';
+import flightController from './../controllers/flightController.js';
+import weatherController from './../controllers/weatherController.js';
+
 // Create the router object
 const apiRouter = express.Router();
 
@@ -20,6 +21,7 @@ apiRouter.post(
   }
 );
 
+// Uncomment and use this route if needed
 // apiRouter.get(
 //   '/weather/:iataCode',
 //   (req, res, next) => {
@@ -30,9 +32,9 @@ apiRouter.post(
 //   weatherController.fetchWeather,
 //   (req, res) => {
 //     console.log(req.dataVault);
-//     const flightData = req.dataVault;
-//     return res.status(200).json({ flightData });
+//     const weatherData = req.dataVault;
+//     return res.status(200).json({ weatherData });
 //   }
 // );
 
-module.exports = apiRouter;
+export default apiRouter;
